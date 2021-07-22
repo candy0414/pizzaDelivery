@@ -17,4 +17,8 @@ use App\Models\Pizza_delivery_driver;
 class DeliverController extends Controller
 {
     //
+    public function deliver(Request $request)
+    {
+        
+    }
 }

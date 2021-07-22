@@ -15,7 +15,8 @@ class CreatePizzaDeliveryMethodsTable extends Migration
     {
         Schema::create('pizza_delivery_methods', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('pizza_id');
+            $table->string('method');
         });
     }
 

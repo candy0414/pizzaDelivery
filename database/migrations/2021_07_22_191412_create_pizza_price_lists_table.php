@@ -15,7 +15,8 @@ class CreatePizzaPriceListsTable extends Migration
     {
         Schema::create('pizza_price_lists', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('pizza_id');
+            $table->integer('price');
         });
     }
 

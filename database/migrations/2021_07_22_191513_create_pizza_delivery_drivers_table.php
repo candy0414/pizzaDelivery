@@ -15,7 +15,8 @@ class CreatePizzaDeliveryDriversTable extends Migration
     {
         Schema::create('pizza_delivery_drivers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('pizza_id');
+            $table->string('driver');
         });
     }
 

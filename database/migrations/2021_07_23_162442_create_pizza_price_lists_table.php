@@ -17,6 +17,7 @@ class CreatePizzaPriceListsTable extends Migration
             $table->id();
             $table->integer('pizza_id');
             $table->decimal('cost', 10, 2);
+            $table->foreign('pizza_id')->references('id')->on('pizzas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

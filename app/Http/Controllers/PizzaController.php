@@ -42,7 +42,9 @@ class PizzaController extends Controller
         $order->pizza_id = $request->pizza_id;
         $order->pizza_ingredient_id = $request->pizza_ingredient_id;
         $order->delivery_method_id = $request->delivery_method_id;
-        $order->delivery_driver_id = $request->delivery_driver_id;
+        if(Delivery_method::where('id', $request->delivery_method_id)->value('type') == 'delivery') {
+            $order->delivery_driver_id = Delivery_driver::where('employee_id', Auth::user()->id)->value('id');
+        }
         $order->save();
 
         Session::flash('flash_message', 'Thank you for ordering pizza!');

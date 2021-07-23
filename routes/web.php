@@ -17,5 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/order', 'OrderController@order');
-Route::post('/deliver', 'DeliverController@deliver');
+Route::post('/order', 'PizzaController@order');

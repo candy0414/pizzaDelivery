@@ -15,7 +15,7 @@ class CreatePizzaIngredientsTable extends Migration
     {
         Schema::create('pizza_ingredients', function (Blueprint $table) {
             $table->id();
-            $table->string('item_name');
+            $table->string('item_name', 50);
             $table->decimal('extra_cost', 10, 2);
         });
     }

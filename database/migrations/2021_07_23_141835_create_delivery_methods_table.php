@@ -15,7 +15,7 @@ class CreateDeliveryMethodsTable extends Migration
     {
         Schema::create('delivery_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('method_name');
+            $table->string('method_name', 50);
             $table->enum('type', ['eat_in', 'pick_up', 'delivery']);
             $table->decimal('cost', 10, 2);
         });

@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('pizza_ingredient_id')->nullable();
             $table->integer('delivery_method_id');
             $table->integer('delivery_driver_id')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

@@ -23,6 +23,14 @@ class PizzaController extends Controller
 
     }
 
+    public function orderPage(Request $request)
+    {
+        $pizzas = Pizza::all();
+        $pizza_ingredients = Pizza_ingredients::all();
+        $delivery_methods = Delivery_method::all();
+        return view('order', compact('pizzas', 'pizza_ingredients', 'delivery_methods'));
+    }
+
     public function order(Request $request)
     {
         $data = $request->all();
@@ -30,6 +38,7 @@ class PizzaController extends Controller
         $rule = array(
             'pizza_id' => 'required',
             'delivery_method_id' => 'required',
+            'address' => 'required',
         );
 
         $validator = \Validator::make($data, $rule);
@@ -44,6 +53,7 @@ class PizzaController extends Controller
         $order->delivery_method_id = $request->delivery_method_id;
         if(Delivery_method::where('id', $request->delivery_method_id)->value('type') == 'delivery') {
             $order->delivery_driver_id = Delivery_driver::where('employee_id', Auth::user()->id)->value('id');
+            $order->address = $request->address;
         }
         $order->save();
 
